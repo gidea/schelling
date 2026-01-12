@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schellinger Capital - Clarity that accelerates your fundraising</title>
+  <meta name="description" content="Fundraising succeeds when companies and investors share the same point of clarity. We help you create the strategic narrative, cohesive materials, and a disciplined process that moves your round forward.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: oklch(96.2% 0.059 95.617);
+      color: #334365;
+      overflow-x: hidden;
+    }
+    
+    /* Scroll animation classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .slide-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    
+    .slide-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .slide-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .slide-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .slide-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Stagger animation delays */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Navbar backdrop blur */
+    .navbar-blur {
+      backdrop-filter: blur(10px);
+      background: oklch(96.2% 0.059 95.617 / 0.9);
+      border-color: rgba(51, 67, 101, 0.1);
+    }
+    
+    /* Button styles */
+    .btn-primary {
+      background-color: #334365;
+      color: oklch(96.2% 0.059 95.617);
+      transition: all 0.3s ease;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: #4a5a7a;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: #334365;
+      border: 1px solid rgba(51, 67, 101, 0.3);
+      transition: all 0.3s ease;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      display: inline-block;
+      text-decoration: none;
+    }
+    
+    .btn-secondary:hover {
+      border-color: #334365;
+      background-color: rgba(51, 67, 101, 0.05);
+    }
+    
+    /* Service card styles */
+    .service-card {
+      background: oklch(96.2% 0.059 95.617);
+      border: 1px solid rgba(51, 67, 101, 0.1);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      border-color: rgba(51, 67, 101, 0.3);
+      box-shadow: 0 4px 12px rgba(51, 67, 101, 0.1);
+      transform: translateY(-4px);
+    }
+    
+    .outcome-box {
+      background: rgba(51, 67, 101, 0.05);
+      border-left: 3px solid #334365;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    /* Team card styles */
+    .team-card {
+      background: oklch(96.2% 0.059 95.617);
+      border: 1px solid rgba(51, 67, 101, 0.1);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover {
+      border-color: rgba(51, 67, 101, 0.3);
+      box-shadow: 0 4px 12px rgba(51, 67, 101, 0.1);
+    }
+    
+    /* Form styles */
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(51, 67, 101, 0.2);
+      border-radius: 0.5rem;
+      background: oklch(96.2% 0.059 95.617);
+      color: #334365;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #334365;
+      box-shadow: 0 0 0 3px rgba(51, 67, 101, 0.1);
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #334365;
+    }
+    
+    /* LinkedIn button */
+    .btn-linkedin {
+      background-color: #334365;
+      color: oklch(96.2% 0.059 95.617);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-linkedin:hover {
+      background-color: #4a5a7a;
+      transform: translateY(-2px);
+    }
+    
+    /* Color variables for text */
+    .text-primary {
+      color: #334365;
+    }
+    
+    .text-secondary {
+      color: rgba(51, 67, 101, 0.7);
+    }
+    
+    .text-tertiary {
+      color: rgba(51, 67, 101, 0.5);
+    }
+    
+    .border-color {
+      border-color: rgba(51, 67, 101, 0.1);
+    }
+    
+    /* Philosophy elements grid */
+    .philosophy-element {
+      padding: 1.5rem;
+      border: 1px solid rgba(51, 67, 101, 0.1);
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    
+    .philosophy-element:hover {
+      border-color: rgba(51, 67, 101, 0.3);
+      background: rgba(51, 67, 101, 0.02);
+    }
+    
+    /* Hide on mobile and tablet */
+    @media (max-width: 1024px) {
+      .hide-tablet {
+        display: none !important;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hide-mobile {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 navbar-blur border-b">
+    <nav class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="#" class="flex items-center">
+          <img src="schellingercapital.svg" alt="Schellinger Capital" class="h-8 md:h-10" />
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-sm font-normal text-secondary hover:text-primary transition">Services</a>
+          <a href="#principles" class="text-sm font-normal text-secondary hover:text-primary transition">Principles</a>
+          <a href="#about" class="text-sm font-normal text-secondary hover:text-primary transition">About</a>
+          <a href="#contact" class="text-sm font-normal text-secondary hover:text-primary transition">Contact</a>
+        </div>
+        <button id="menuBtn" class="md:hidden text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12h16"></path>
+            <path d="M4 18h16"></path>
+            <path d="M4 6h16"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden pb-4">
+        <div class="flex flex-col gap-3">
+          <a href="#services" class="text-sm text-secondary hover:text-primary transition py-2">Services</a>
+          <a href="#principles" class="text-sm text-secondary hover:text-primary transition py-2">Principles</a>
+          <a href="#about" class="text-sm text-secondary hover:text-primary transition py-2">About</a>
+          <a href="#contact" class="text-sm text-secondary hover:text-primary transition py-2">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center pt-20 pb-32">
+    <div class="max-w-6xl mx-auto px-6 md:px-8 text-center">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-6 fade-in text-primary">
+        Clarity that accelerates your fundraising
+      </h1>
+      <p class="text-xl md:text-2xl font-medium text-secondary mb-8 fade-in stagger-1">
+        Fundraising succeeds when companies and investors share the same point of clarity.
+      </p>
+      <div class="max-w-3xl mx-auto mt-8 fade-in stagger-2">
+        <p class="text-lg md:text-xl text-secondary leading-relaxed mb-8">
+          Grounded in American economist Thomas Shelling's coordination theory we help you create the strategic narrative, cohesive materials, and a disciplined process that moves your round forward towards investor conviction.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#contact" class="btn-primary">Start your fundraising conversation</a>
+          <a href="#principles" class="btn-secondary">How we work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles Section -->
+  <section id="principles" class="py-20 md:py-32 border-t border-color">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="slide-up">
+          <h2 class="text-4xl md:text-5xl font-light mb-12 text-primary">The Schelling principle applied to fundraising</h2>
+          <p class="text-xl text-secondary mb-6">Fundraising is shaped by many dynamics:</p>
+          <ul class="list-disc list-inside space-y-2 text-lg text-secondary mb-8 ml-4">
+            <li>information gaps</li>
+            <li>evolving narratives</li>
+            <li>internal investor processes</li>
+            <li>shifting market signals.</li>
+          </ul>
+          <p class="text-lg text-primary font-medium mb-6">Across all of these, clarity is the element that accelerates alignment.</p>
+          <p class="text-lg text-secondary leading-relaxed mb-6">
+            Thomas Schelling's coordination theory shows that in complex environments, decisionmakers naturally align around the most transparent and intuitive option.
+          </p>
+          <p class="text-lg text-secondary leading-relaxed">
+            Applied to fundraising, this means investors converge fastest when the company's logic, trajectory, and potential are articulated with precision. Our role is to create that clarity. Through structured analysis, a coherent strategic narrative, and disciplined process execution, we make the underlying investment case unmistakable – enabling investors to evaluate, align, and commit with confidence.
+          </p>
+        </div>
+        <div class="slide-up stagger-1 flex justify-center lg:justify-end">
+          <img src="alignment.svg" alt="Alignment symbol" class="w-full max-w-md h-auto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 md:py-32 border-t border-color">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <h2 class="text-4xl mx-auto text-center md:text-5xl font-light mb-12 text-primary">Fundraising as a Service</h2>
+      <div class="max-w-4xl mx-auto text-center mb-16 fade-in">
+        <p class="text-lg md:text-xl text-secondary leading-relaxed">
+          Fundraising is one of the defining moments in a company's trajectory. Success depends on how clearly the opportunity is framed, how consistently it is communicated, and how effectively the process is managed.
+        </p>
+        <p class="text-lg md:text-xl text-secondary leading-relaxed mt-4">
+          We help companies create clarity and structure. Our work spans strategy, narrative development, material preparation, and disciplined execution—designed to move investors from interest to conviction with fewer setbacks and stronger alignment.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Service 1: Capital raising strategy -->
+        <div class="service-card scale-in">
+          <div class="mb-6">
+            <img src="strategy-element.svg" alt="Capital raising strategy" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <div class="text-sm font-medium text-tertiary mb-2">1</div>
+          <h3 class="text-2xl font-medium mb-4 text-primary">Capital raising strategy</h3>
+          <p class="text-secondary mb-4">What we deliver:</p>
+          <ul class="list-disc list-inside space-y-2 text-secondary mb-6 ml-4">
+            <li>Round design: size, structure, timing, milestones</li>
+            <li>Capital plan aligned with growth trajectory and risk profile</li>
+            <li>Benchmarking against comparable companies and investor expectations</li>
+            <li>Valuation anchors and supporting rationales</li>
+            <li>Investor landscape mapping based on stage, thesis, and strategic fit</li>
+            <li>Readiness assessment and preparation plan</li>
+          </ul>
+          <div class="outcome-box">
+            <p class="text-sm font-medium text-primary mb-1">Outcome:</p>
+            <p class="text-sm text-secondary">A well-framed, credible fundraising plan that aligns the company's needs with the realities of the investor market and sets the round up for efficient execution.</p>
+          </div>
+        </div>
+
+        <!-- Service 2: Investor narrative development -->
+        <div class="service-card scale-in stagger-1">
+          <div class="mb-6">
+            <img src="narrative-element.svg" alt="Investor narrative development" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <div class="text-sm font-medium text-tertiary mb-2">2</div>
+          <h3 class="text-2xl font-medium mb-4 text-primary">Investor narrative development</h3>
+          <p class="text-secondary mb-4">A strong investor narrative is the mechanism through which investors understand, remember, and communicate the opportunity effectively within their partnership. We shape a narrative that brings together traction, growth logic, positioning, and ambition in a coherent and compelling way.</p>
+          <p class="text-secondary mb-4">What we develop:</p>
+          <ul class="list-disc list-inside space-y-2 text-secondary mb-6 ml-4">
+            <li>Strategic narrative structure and storyline</li>
+            <li>Clear articulation of value proposition and market logic</li>
+            <li>Refinement and challenge of traction and growth logic</li>
+            <li>Clarification of competitive context and positioning choices</li>
+            <li>Risk articulation with credible mitigation logic</li>
+            <li>Messaging consistency across all investor touchpoints</li>
+          </ul>
+          <div class="outcome-box">
+            <p class="text-sm font-medium text-primary mb-1">Outcome:</p>
+            <p class="text-sm text-secondary">A narrative that communicates the opportunity with clarity, strengthens internal investor dialogue, and accelerates alignment around the opportunity.</p>
+          </div>
+        </div>
+
+        <!-- Service 3: Investor materials -->
+        <div class="service-card scale-in stagger-2">
+          <div class="mb-6">
+            <img src="materials-element.svg" alt="Investor materials" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <div class="text-sm font-medium text-tertiary mb-2">3</div>
+          <h3 class="text-2xl font-medium mb-4 text-primary">Investor materials</h3>
+          <p class="text-secondary mb-4">We design materials as decision tools, ensuring they reinforce the narrative and make it easy for investors to evaluate the opportunity.</p>
+          <p class="text-secondary mb-4">Deliverables include:</p>
+          <ul class="list-disc list-inside space-y-2 text-secondary mb-6 ml-4">
+            <li>Pitch deck with strategic, financial, and visual coherence</li>
+            <li>Review and refinement of the financial model, including logic and assumptions</li>
+            <li>Metrics and data pack structured for investor evaluation</li>
+            <li>Dealroom structure with prioritised document hierarchy</li>
+            <li>Q&A bank supporting internal investor discussions</li>
+            <li>Leadership talking points for consistent communication</li>
+          </ul>
+          <div class="outcome-box">
+            <p class="text-sm font-medium text-primary mb-1">Outcome:</p>
+            <p class="text-sm text-secondary">Clear, investor-ready materials that elevate credibility, reduce uncertainty, and support informed decision-making.</p>
+          </div>
+        </div>
+
+        <!-- Service 4: Process execution -->
+        <div class="service-card scale-in stagger-3">
+          <div class="mb-6">
+            <img src="execution-element.svg" alt="Process execution" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <div class="text-sm font-medium text-tertiary mb-2">4</div>
+          <h3 class="text-2xl font-medium mb-4 text-primary">Process execution</h3>
+          <p class="text-secondary mb-4">A fundraising round moves forward when momentum is actively managed. We orchestrate the investor process with the discipline, cadence, and precision required to reach the closing point.</p>
+          <p class="text-secondary mb-4">What we manage:</p>
+          <ul class="list-disc list-inside space-y-2 text-secondary mb-6 ml-4">
+            <li>Investor outreach and sequencing strategy</li>
+            <li>Meeting flow and preparation</li>
+            <li>Follow-ups, investor information requests, and access to materials</li>
+            <li>Pipeline tracking and structured investor updates</li>
+            <li>Ensuring the process moves forward with consistent pace and clear next steps</li>
+            <li>Support through negotiation, term refinement, and closing preparation</li>
+            <li>Coordination with legal advisors and investor teams</li>
+          </ul>
+          <div class="outcome-box">
+            <p class="text-sm font-medium text-primary mb-1">Outcome:</p>
+            <p class="text-sm text-secondary">A structured process with less friction that allows founders to focus on the conversations that matter – while we manage the complexity around them.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center fade-in stagger-4">
+        <p class="text-lg text-secondary mb-6">
+          If you are preparing a Seed, Series A, or early-growth round, we can help you create the clarity, structure, and momentum that drive investor conviction.
+        </p>
+        <a href="#contact" class="btn-primary">Start a conversation about your capital raise</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 md:py-32 border-t border-color">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <!-- Fundraising Philosophy -->
+      <div class="max-w-4xl mx-auto mb-24 slide-up">
+        <h2 class="text-4xl md:text-5xl font-light mb-12 text-primary text-center">Investment Case Philosophy</h2>
+        <p class="text-lg text-secondary leading-relaxed mb-8 text-center">
+          Fundraising succeeds when the investment case is easy to understand, intuitive to evaluate, and consistent across every touchpoint. Our philosophy is built around creating the clarity that enables this.
+        </p>
+        <p class="text-lg text-secondary text-center leading-relaxed mb-8">
+          Drawing on Thomas Schelling's coordination theory, we focus on making the underlying logic of the opportunity transparent—so investors can quickly form a shared understanding and move toward alignment. When clarity drives the process, momentum follows.
+        </p>
+        <p class="text-lg text-secondary text-center leading-relaxed mb-8">
+          We apply this thinking through four tightly connected elements:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="philosophy-element slide-up stagger-1">
+            <h3 class="text-xl font-medium mb-2 text-primary">Analysis:</h3>
+            <p class="text-secondary">Distilling the business into a clear investment logic: what drives growth, what creates value, and what requires explanation.</p>
+          </div>
+          <div class="philosophy-element slide-up stagger-2">
+            <h3 class="text-xl font-medium mb-2 text-primary">Narrative:</h3>
+            <p class="text-secondary">Shaping a coherent story that connects traction, strategy, and ambition in a way that is intuitive for investors to grasp and communicate internally.</p>
+          </div>
+          <div class="philosophy-element slide-up stagger-3">
+            <h3 class="text-xl font-medium mb-2 text-primary">Materials:</h3>
+            <p class="text-secondary">Translating the investment case into decision-ready materials that present information consistently and support confident assessment.</p>
+          </div>
+          <div class="philosophy-element slide-up stagger-4">
+            <h3 class="text-xl font-medium mb-2 text-primary">Process:</h3>
+            <p class="text-secondary">Maintaining pace, structure, and coordination throughout the round—ensuring forward movement and clarity across all interactions.</p>
+          </div>
+        </div>
+        
+        <p class="text-lg text-primary font-medium text-center">
+          Across all phases, our principle remains simple: clarity enables alignment, and alignment drives momentum.
+        </p>
+      </div>
+      
+
+      <!-- Our Team -->
+      <div class="mb-20 slide-up">
+        <div class="max-w-4xl mb-20 mx-auto">
+          <h2 class="text-4xl md:text-5xl font-light mb-12 text-primary text-center">Strategy & Execution Team</h2>
+          <p class="text-lg text-secondary leading-relaxed">
+            Schellinger Capital is a strategic fundraising advisory firm specialising in Seed, Series A and early-growth rounds for technology companies. We help founders create clarity in their investment case and run a disciplined, structured fundraising process that builds alignment and momentum with investors.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="team-card scale-in">
+            <h3 class="text-xl font-medium mb-2 text-primary">Adam Hillestrøm</h3>
+            <p class="text-sm font-medium text-secondary mb-4">Founder & CEO</p>
+            <p class="text-secondary mb-4 leading-relaxed">
+              Adam leads Schellinger Capital and brings experience from senior executive and board roles across several technology companies. He has a strong ability to understand new technologies quickly and translate them into clear, compelling investment narratives.
+            </p>
+            <p class="text-secondary mb-4 leading-relaxed">
+              Before founding Schellinger Capital, Adam also built and led companies as an entrepreneur, giving him first-hand insight into the multifaceted demands placed on founders during high-growth and fundraising phases.
+            </p>
+            <p class="text-sm text-tertiary">
+              Adam holds an MSc in Economics and Business Administration with a specialisation in Technology Management and has completed executive programmes at Harvard, London Business School and UC Berkeley.
+            </p>
+          </div>
+          
+          <div class="team-card scale-in stagger-1">
+            <h3 class="text-xl font-medium mb-2 text-primary">Caspar Rantsén</h3>
+            <p class="text-sm font-medium text-secondary mb-4">Senior Relations Director</p>
+            <p class="text-secondary mb-4 leading-relaxed">
+              Caspar brings a dual perspective as both investor and advisor. Through his family office, he invests in SMEs, funds and real estate, providing him with practical insight into how investors assess opportunities and make decisions.
+            </p>
+            <p class="text-secondary mb-4 leading-relaxed">
+              His work at Schellinger Capital spans investor identification, outreach structuring and supporting companies throughout the capital-raising process from preparation to closing.
+            </p>
+            <p class="text-sm text-tertiary">
+              Caspar holds a Diploma in Hospitality Management from Les Roches.
+            </p>
+          </div>
+          
+          <div class="team-card scale-in stagger-2">
+            <h3 class="text-xl font-medium mb-2 text-primary">Dimitris Papantzikos</h3>
+            <p class="text-sm font-medium text-secondary mb-4">AI Application Engineer</p>
+            <p class="text-secondary mb-4 leading-relaxed">
+              Dimitris leads our work on applying machine learning to improve the efficiency of the fundraising process. With a background in applied ML, automation and data-driven optimisation, he develops tools that streamline information management, enhance investor targeting and support more effective process orchestration.
+            </p>
+            <p class="text-sm text-tertiary">
+              He holds a BSc in Mathematics and is completing an MSc in Mathematical Modelling & Computation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advisory Board & Strategic Partnership -->
+      <div class="mb-20 slide-up">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Advisory Board -->
+          <div class="team-card scale-in">
+            <h3 class="text-xl font-medium mb-4 text-primary">Advisory Board</h3>
+            <p class="text-secondary leading-relaxed">
+              We are supported by an advisory board with deep experience across technology, investment, capital raising and legal strategy. The board contributes diverse perspectives to our work, strengthens the analytical foundation behind our advice, and helps ensure that our methods remain modern, rigorous and relevant to the evolving fundraising landscape.
+            </p>
+          </div>
+
+          <!-- Strategic Partnership -->
+          <div class="team-card scale-in stagger-1">
+            <h3 class="text-xl font-medium mb-4 text-primary">Strategic Partnership</h3>
+            <p class="text-secondary leading-relaxed">
+              We work in close strategic cooperation with <strong class="text-primary">Highbridge Law Firm</strong>, ensuring legal preparation, structuring and documentation proceed in step with the strategic narrative and the overall fundraising process.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Work With Us -->
+      <div class="max-w-4xl mx-auto mb-12 slide-up">
+        <h2 class="text-4xl md:text-5xl font-light mb-8 text-primary text-center">Why work with us</h2>
+        <p class="text-lg text-secondary leading-relaxed mb-8 text-center">
+          Founders choose Schellinger Capital because we combine:
+        </p>
+        <ul class="space-y-4 text-lg text-secondary">
+          <li class="flex items-start">
+            <span class="text-primary mr-3">•</span>
+            <span><strong class="text-primary">Analytical rigour</strong> — shaping the investment logic with clarity and discipline</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-primary mr-3">•</span>
+            <span><strong class="text-primary">Narrative precision</strong> — translating strategy and traction into investor-ready communication</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-primary mr-3">•</span>
+            <span><strong class="text-primary">Execution discipline</strong> — managing pace, expectations and coordination throughout the round</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-primary mr-3">•</span>
+            <span><strong class="text-primary">Full fundraising support</strong> — guiding founders from preparation through investor engagement and closing</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-primary mr-3">•</span>
+            <span><strong class="text-primary">Integrated legal alignment</strong> — delivered through our cooperation with Highbridge Law Firm</span>
+          </li>
+        </ul>
+        <p class="text-lg text-secondary leading-relaxed mt-8 text-center">
+          Whether preparing a Seed, Series A or early-growth round, we help you create clarity that drives alignment — and alignment that builds momentum.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center fade-in">
+        <p class="text-lg text-secondary mb-6">
+          If you are preparing your next fundraise and want a partner who can elevate both your investment story and your execution, we would be pleased to start a conversation.
+        </p>
+        <a href="#contact" class="btn-primary">Start your fundraising conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights Section -->
+  <section id="insights" class="py-20 md:py-32 border-t border-color">
+    <div class="max-w-4xl mx-auto px-6 md:px-8 text-center">
+      <h2 class="text-4xl md:text-5xl font-light mb-6 text-primary fade-in">Insights & Perspectives</h2>
+      <p class="text-lg text-secondary mb-8 fade-in stagger-1">
+        We share perspectives on capital raising on LinkedIn.
+      </p>
+      <p class="text-lg text-secondary mb-8 fade-in stagger-2">
+        Follow Schellinger Capital or Adam Hillestrøm for our latest insights.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in stagger-3">
+        <a href="https://linkedin.com/company/schellinger-capital" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Follow Schellinger Capital
+        </a>
+        <a href="https://linkedin.com/in/adam-hillestrom" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Follow Adam Hillestrøm
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 md:py-32 border-t border-color">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="max-w-4xl mx-auto mb-12 text-center fade-in">
+        <h2 class="text-4xl md:text-5xl font-light mb-6 text-primary">Start your fundraising conversation</h2>
+        <p class="text-lg text-secondary leading-relaxed">
+          If you are preparing a Seed, Series A or early-growth round, we would be pleased to learn about your plans and discuss how we can support your process.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Contact Details -->
+        <div class="slide-left">
+          <h3 class="text-2xl font-medium mb-6 text-primary">Contact details</h3>
+          <div class="space-y-6">
+            <div>
+              <p class="text-sm font-medium text-primary mb-2">Email</p>
+              <a href="mailto:hello@schellcap.com" class="text-lg text-secondary hover:text-primary transition">hello@schellcap.com</a>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-primary mb-2">Phone</p>
+              <a href="tel:+4521326665" class="text-lg text-secondary hover:text-primary transition">+45 21 32 66 65</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="slide-right">
+          <h3 class="text-2xl font-medium mb-6 text-primary">Send us a message</h3>
+          <p class="text-sm text-secondary mb-6">
+            Please share a short description of your company, funding stage and objectives. We typically respond within one business day.
+          </p>
+          <form action="#" method="POST" class="space-y-4">
+            <div>
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            <div>
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            <div>
+              <label for="company" class="form-label">Company</label>
+              <input type="text" id="company" name="company" required class="form-input" />
+            </div>
+            <div>
+              <label for="stage" class="form-label">Stage</label>
+              <select id="stage" name="stage" required class="form-input">
+                <option value="">Select stage</option>
+                <option value="seed">Seed</option>
+                <option value="series-a">Series A</option>
+                <option value="early-growth">Early growth</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" rows="5" required class="form-input"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full">Send message</button>
+          </form>
+          <p class="text-xs text-tertiary mt-4">
+            All information will be treated confidentially and used solely for the purpose of assessing your enquiry.
+          </p>
+          <p class="text-sm text-secondary mt-6">
+            Prefer to connect via LinkedIn? You are welcome to reach out directly on LinkedIn to <a href="https://linkedin.com/in/adam-hillestrom" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Adam Hillestrøm</a> or follow <a href="https://linkedin.com/company/schellinger-capital" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Schellinger Capital</a> for updates and insights.
+          </p>
+          <p class="text-sm text-secondary mt-4">
+            We support founders across Europe and the Nordics. Meetings can be arranged online or in person.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-color py-12">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="text-sm font-medium mb-4 text-primary">Navigation</h3>
+          <ul class="space-y-2 text-sm text-secondary">
+            <li><a href="#services" class="hover:text-primary transition">Services</a></li>
+            <li><a href="#principles" class="hover:text-primary transition">Principles</a></li>
+            <li><a href="#about" class="hover:text-primary transition">About</a></li>
+            <li><a href="#insights" class="hover:text-primary transition">Insights</a></li>
+            <li><a href="#contact" class="hover:text-primary transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-4 text-primary">Contact</h3>
+          <ul class="space-y-2 text-sm text-secondary">
+            <li><a href="mailto:hello@schellcap.com" class="hover:text-primary transition">hello@schellcap.com</a></li>
+            <li><a href="tel:+4521326665" class="hover:text-primary transition">+45 21 32 66 65</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-4 text-primary">Connect</h3>
+          <ul class="space-y-2 text-sm text-secondary">
+            <li><a href="https://linkedin.com/company/schellinger-capital" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition">LinkedIn</a></li>
+            <li><a href="https://linkedin.com/in/adam-hillestrom" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition">Adam Hillestrøm</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-4 text-primary">Legal</h3>
+          <ul class="space-y-2 text-sm text-secondary">
+            <li><a href="#" class="hover:text-primary transition">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-primary transition">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-color pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-xs text-tertiary">© 2025 Schellinger Capital. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with animation classes
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-up, .slide-left, .slide-right, .scale-in');
+      animatedElements.forEach(el => observer.observe(el));
+      
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      let menuOpen = false;
+      
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          menuOpen = !menuOpen;
+          mobileMenu.classList.toggle('hidden', !menuOpen);
+        });
+      }
+      
+      // Close mobile menu when clicking a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuOpen = false;
+        });
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
